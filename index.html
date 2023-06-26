@@ -24,16 +24,26 @@
         <main class="container">
             
             <div class="w-50 mx-auto p-4">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Inserisci un nuovo elemento" >
+                <div class="input-group mb-4">
+                    <input type="text" class="form-control" placeholder="Inserisci un nuovo elemento" v-model="newItem">
                     <button class="btn btn-outline-secondary" type="button">Button</button>
                 </div>
-                <ul class="list-group">
-                    <li v-for="(item, index) in itemsList" class="list-group-item">
-                        <input class="form-check-input me-1" type="checkbox" v-model="item.done">
-                        <label :class="(item.done) ? 'text-decoration-line-through' : ''" class="form-check-label">{{ item.text }}</label>
+                <ul v-if="itemsList.length > 0" class="list-group">
+                    <li v-for="(item, index) in itemsList" class="list-group-item d-flex justify-content-between">
+                        <div>
+                            <input class="form-check-input me-2" type="checkbox" v-model="item.done">
+                            <label :class="(item.done) ? 'text-decoration-line-through' : ''" class="form-check-label">
+                                {{ item.text.charAt(0).toUpperCase()+item.text.substring(1) }}
+                            </label>
+                        </div>
+                        <div>
+                            <i @click="removeItem(index)" class="fa-solid fa-trash-can"></i>
+                        </div>
                     </li>
                 </ul>
+                <p v-else class="ms-3">
+                    Aggiungi un elemento alla tua lista
+                </p>
             </div>
         </main>
     </div>

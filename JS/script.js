@@ -29,6 +29,8 @@ createApp({
     }
   },
   methods: {
-
+    removeItem(index) {
+        this.itemsList.splice(index, 1)
+    }
   }
 }).mount('#app')
