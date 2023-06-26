@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue To Do List</title>
+    <!-- FONTAWESOME CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- BOOTSTRAP CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="./CSS/style.css">
+
+</head>
+
+<body>
+    <div id="app">
+        <header class="container">
+            <h1 class="text-center p-4">
+                Vue To Do List
+            </h1>
+        </header>
+        <main class="container">
+            
+            <div class="w-50 mx-auto p-4">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Inserisci un nuovo elemento" >
+                    <button class="btn btn-outline-secondary" type="button">Button</button>
+                </div>
+                <ul class="list-group">
+                    <li v-for="(item, index) in itemsList" class="list-group-item">
+                        <input class="form-check-input me-1" type="checkbox" v-model="item.done">
+                        <label :class="(item.done) ? 'text-decoration-line-through' : ''" class="form-check-label">{{ item.text }}</label>
+                    </li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    <!-- VUE JS -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- CUSTOM JS -->
+    <script src="./JS/script.js"></script>
+</body>
+
+</html>
