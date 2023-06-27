@@ -25,7 +25,7 @@
             
             <div class="w-50 mx-auto p-4">
                 <div class="input-group mb-4">
-                    <input type="text" class="form-control" placeholder="Inserisci un nuovo elemento" v-model.trim="newItemText">
+                    <input  @keyup.enter="addItem()" type="text" class="form-control" placeholder="Inserisci un nuovo elemento" v-model.trim="newItemText">
                     <button @click="addItem()" class="btn btn-outline-secondary" type="button">Aggiungi</button>
                 </div>
                 <ul v-if="itemsList.length > 0" class="list-group">
