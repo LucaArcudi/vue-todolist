@@ -3,22 +3,32 @@ const { createApp } = Vue
 createApp({
   data() {
     return {
-        newItem: '',
-        itemsList: [],
+      newItemText: '',
+      itemsList: [],
     }
   },
   methods: {
     removeItem(index) {
-        this.itemsList.splice(index, 1)
+      this.itemsList.splice(index, 1)
     },
     addItem(){
-        if (this.newItem.length > 2) {
-            this.itemsList.push({text: this.newItem.toLowerCase(), done: false})
-            this.newItem = ''
-        } else {
-            alert('Inserisci un elemento lungo almeno 3 caratteri.')
-            this.newItem = ''
+      if (this.newItemText.length > 2) {
+        
+        const newItemObject = {
+          text: this.newItemText.toLowerCase(),
+          done: false,
         }
-    }
-  }
+        
+        if (!this.itemsList.some((item) => item.text === newItemObject.text)) {
+          this.itemsList.push(newItemObject)
+          this.newItemText = ''
+        } else {
+          alert('L\'elemento è già presente nella lista.')
+        }
+      
+      } else {
+        alert('Inserisci un elemento lungo almeno 3 caratteri.')
+      }
+    },
+  },
 }).mount('#app')
