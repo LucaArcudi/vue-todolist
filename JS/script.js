@@ -4,33 +4,21 @@ createApp({
   data() {
     return {
         newItem: '',
-        itemsList: [
-            {
-                text: 'farina',
-                done: false
-            },
-            {
-                text: 'uova',
-                done: false
-            },
-            {
-                text: 'pane',
-                done: false
-            },
-            {
-                text: 'petto di pollo',
-                done: false
-            },
-            {
-                text: 'grana padano',
-                done: false
-            },
-        ],
+        itemsList: [],
     }
   },
   methods: {
     removeItem(index) {
         this.itemsList.splice(index, 1)
+    },
+    addItem(){
+        if (this.newItem.length > 2) {
+            this.itemsList.push({text: this.newItem.toLowerCase(), done: false})
+            this.newItem = ''
+        } else {
+            alert('Inserisci un elemento lungo almeno 3 caratteri.')
+            this.newItem = ''
+        }
     }
   }
 }).mount('#app')
